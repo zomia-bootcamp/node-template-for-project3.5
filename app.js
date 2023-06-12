@@ -11,7 +11,7 @@ app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/views/index.html');
 });
 
 app.post("/", (req, res) => {
