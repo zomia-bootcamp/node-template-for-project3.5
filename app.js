@@ -13,9 +13,3 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get("/", (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
-
-app.post("/", (req, res) => {
-    var subName = req.body.yourname
-    var subEmail = req.body.youremail;
-   res.send("Hello " + subName + ", Thank you for subcribing. You email is " + subEmail);
-});
