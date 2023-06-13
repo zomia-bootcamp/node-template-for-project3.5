@@ -1,14 +1,5 @@
-// import   from '/forms/state.js';
+import stateObj  from '/forms/state.js';
 $(document).ready(() => {
-    const state = {
-        username: '',
-        password: '',
-        loginInfo: getLoginInfo,
-        topicsArr: ['HTML', 'CSS', 'javascript', 'jQuery', 'APIs', 'Video Games'],
-        activeTopic: '',
-        topicText: getTopicText
-    };
-
     hideInitialElements();
     displayTopic();
     handleLoginSubmit();
@@ -22,20 +13,12 @@ $(document).ready(() => {
         $('#video-games-comment').hide();
     }
 
-    function getLoginInfo() {
-        return `Your username is ${this.username} and your password is ${this.password}`;
-    }
-
-    function getTopicText() {
-            return `We are currently learning ${this.activeTopic}`;
-    }
-
     function displayTopic() {
-        $('#current-topic').text(state.topicText())
+        $('#current-topic').text(stateObj.topicText())
     }
 
     function createTopicsDropwdown() {
-        state.topicsArr.forEach(topic => {
+        stateObj.topicsArr.forEach(topic => {
             let topicOption = $("<option></option>")
                 .text(topic);
 
@@ -50,7 +33,7 @@ $(document).ready(() => {
 
             displayTopic();
 
-            if (state.activeTopic === 'Video Games') {
+            if (stateObj.activeTopic === 'Video Games') {
                 $('#video-games-comment').show();
             } else {
                 $('#video-games-comment').hide();
@@ -89,7 +72,7 @@ $(document).ready(() => {
                 updateState('password', password);
                 
                 $('#login-display-info')
-                    .text(state.loginInfo())
+                    .text(stateObj.loginInfo())
                     .show();
                 
                 $('#clear-login-display').show();
@@ -123,6 +106,6 @@ $(document).ready(() => {
     }
 
     function updateState(key, value) {
-        state[key] = value;
+        stateObj[key] = value;
     }
 });
