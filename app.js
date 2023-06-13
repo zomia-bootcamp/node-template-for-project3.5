@@ -2,6 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();  
 
+var jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
+
+var $ = jQuery = require('jquery')(window);
+
 app.listen(3000, () => {
   console.log("Application started and Listening on port 3000");
 });
@@ -11,5 +19,5 @@ app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(__dirname + '/forms/index.html');
 });
