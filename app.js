@@ -1,14 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const app = express();  
-
-var jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
-
-var $ = jQuery = require('jquery')(window);
+const app = express();
 
 app.listen(3000, () => {
   console.log("Application started and Listening on port 3000");
